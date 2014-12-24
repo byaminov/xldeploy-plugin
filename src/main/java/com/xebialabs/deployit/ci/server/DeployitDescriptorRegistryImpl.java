@@ -28,6 +28,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.xebialabs.deployit.ci.ArtifactView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -376,7 +377,8 @@ public class DeployitDescriptorRegistryImpl implements DeployitDescriptorRegistr
         Predicate<PropertyDescriptor> editablePropertyDescriptors = new Predicate<PropertyDescriptor>() {
             @Override
             public boolean apply(PropertyDescriptor pd) {
-                return !pd.isHidden() && !pd.getName().equals("tags") && !isEmbeddedProperty(pd, embeddedDeployableType);
+                return !pd.isHidden() && !pd.getName().equals("tags") && !pd.getName().equals(ArtifactView.FILE_URI_PROPERTY)
+                        && !isEmbeddedProperty(pd, embeddedDeployableType);
             }
         };
         return getPropertiesForDeployableType(type, editablePropertyDescriptors);

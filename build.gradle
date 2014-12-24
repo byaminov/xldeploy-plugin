@@ -44,6 +44,9 @@ repositories {
     maven {
         url "${projectDir}/repo"
     }
+    maven {
+        url "http://www.knopflerfish.org/maven2"
+    }
 }
 
 
@@ -120,8 +123,7 @@ configurations {
 }
 
 ext {
-    xlPlatformVersion = "2014.7.3"
-    xlDeployVersion = "4.5.1"
+    xlPlatformVersion = "2014.10"
     truezipVersion = "7.1.4" // this is the latest version not to bork on a Java6 Jenkins master/slave-setup
     // (Later versions reference NIO.2, resulting in a NoClassDefFoundError on java.nio.file.Path)
 
@@ -145,7 +147,7 @@ configurations.all {
 }
 
 dependencies {
-    compile "com.xebialabs.deployit.engine:packager:$xlDeployVersion"
+    compile "com.xebialabs.deployit.engine:packager:$xlPlatformVersion"
     compile "com.xebialabs.deployit:engine-api:$xlPlatformVersion"
     compile "com.xebialabs.deployit.engine:remote-booter:$xlPlatformVersion"
     compile "org.jdom:jdom2:2.0.5"
